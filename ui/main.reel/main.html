@@ -2,21 +2,78 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Main</title>
-
+    <title>
+        Main
+    </title>
     <link rel="stylesheet" href="main.css">
-
     <script type="text/montage-serialization">
-        {
-            "owner": {
-                "properties": {
-                    "element": {"#": "main"}
+    {
+        "owner": {
+            "properties": {
+                "element": {"#": "main"},
+                "displayValue": {"@": "value"},
+                "value": "0"
+            }
+        },
+        "decrement": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "decrement"},
+                "enabled": true,
+                "label": "-"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
                 }
+            ]
+        },
+        "increment": {
+            "prototype": "digit/ui/button.reel",
+            "properties": {
+                "element": {"#": "increment"},
+                "enabled": true,
+                "label": "+"
+            },
+            "listeners": [
+                {
+                    "type": "action",
+                    "useCapture": false,
+                    "listener": {"@": "owner"}
+                }
+            ]
+        },
+        "input": {
+            "prototype": "digit/ui/text-field.reel",
+            "properties": {
+                "element": {"#": "input"},
+                "placeholderValue": "Text"
+            },
+            "bindings": {
+                "value": {"<->": "@owner.value"}
+            }
+        },
+        "value": {
+            "prototype": "digit/ui/text.reel",
+            "properties": {
+                "element": {"#": "value"},
+                "value": "0"
+            },
+            "bindings": {
+                "value": {"<-": "@owner.value"}
             }
         }
+    }
     </script>
 </head>
 <body>
-    <div data-montage-id="main" data-montage-skin="light" class="Main"></div>
+    <div data-montage-id="main" data-montage-skin="light" class="Main">
+        <button data-montage-id="increment"></button>
+        <p data-montage-id="value"></p>
+        <input data-montage-id="input" type="text">
+        <button data-montage-id="decrement"></button>
+    </div>
 </body>
 </html>

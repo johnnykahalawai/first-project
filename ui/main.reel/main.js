@@ -13,5 +13,20 @@ exports.Main = Component.specialize(/** @lends Main# */ {
         value: function Main() {
             this.super();
         }
+    },
+
+    handleIncrementAction: {
+        value: function (event) {
+            var value = Number(this.value);
+            this.value = value + 1;
+        }
+    },
+
+    handleDecrementAction: {
+        value: function (event) {
+            var value = Number(this.value);
+            this.value = value - 1;
+        }
     }
+
 });
